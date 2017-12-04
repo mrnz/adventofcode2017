@@ -1,0 +1,17 @@
+{
+  "name": "adventofcode2017",
+  "version": "1.0.0",
+  "description": "solutions to problems from AdventOfCode.com 2017",
+  "main": "index.js",
+  "dependencies": {
+    "codecov": "^3.0.0",
+    "istanbul": "^0.4.5",
+    "mocha": "^4.0.1"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "./node_modules/.bin/mocha ./test"
+  },
+  "author": "Przemek Marciniak",
+  "license": "ISC"
+}
