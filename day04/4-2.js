@@ -1,8 +1,6 @@
 'use strict';
 module.exports = data => {
 
-    data = data.trim().split('\n');
-
     const validate = (input) => {
 
         const validation_result = input
@@ -25,6 +23,8 @@ module.exports = data => {
         return validation_result;
     };
 
-    return data.reduce((total, pass)=> total += validate(pass) ? 1 : 0 ,0);
+    return data.trim()
+        .split('\n')
+        .reduce((total, pass)=> total += validate(pass) ? 1 : 0 ,0);
 
 };
