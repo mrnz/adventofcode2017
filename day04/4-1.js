@@ -15,7 +15,6 @@ module.exports = data => {
 
         }, true);
 
-        return validation_result
     };
 
     return data.trim()
