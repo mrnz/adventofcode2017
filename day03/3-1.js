@@ -18,7 +18,7 @@ module.exports = data => {
          i += di;
          j += dj;
          ++segment_passed;
-         result = [i,j]
+         result = [i,j];
 
          if (segment_passed == segment_length) {
              // done with current segment
@@ -31,7 +31,7 @@ module.exports = data => {
              dj = buffer;
 
              // increase segment length if necessary
-             if (dj == 0) {
+             if (dj === 0) {
                  ++segment_length;
              }
          }

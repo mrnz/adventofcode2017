@@ -1,7 +1,7 @@
 'use strict';
 module.exports = data => {
 
-    data = data.trim().split('\n')
+    data = data.trim().split('\n');
 
     const validate = (input) => {
 
@@ -12,7 +12,7 @@ module.exports = data => {
                 arr.forEach( (value, idx) => {
                     if(currantIndex !== idx && currantValue.length === value.length) {
                         if(currantValue.split('').sort().join('') === value.split('').sort().join('')) {
-                            return total = false;
+                            total = false;
                         }
                     }
                     return total;
@@ -22,7 +22,7 @@ module.exports = data => {
 
         }, true);
 
-        return validation_result
+        return validation_result;
     };
 
     return data.reduce((total, pass)=> total += validate(pass) ? 1 : 0 ,0);

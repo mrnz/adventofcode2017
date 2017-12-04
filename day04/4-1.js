@@ -1,7 +1,7 @@
 'use strict';
 module.exports = data => {
 
-    data = data.trim().split('\n')
+    data = data.trim().split('\n');
 
     const validate = (input) => {
 

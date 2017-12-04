@@ -21,7 +21,7 @@ module.exports = data => {
          j += dj;
          ++segment_passed;
 
-         result[i+'x'+j] = 0
+         result[i+'x'+j] = 0;
 
          result[i+'x'+j] += result[(i+1)+'x'+(j+1)] ? result[(i+1)+'x'+(j+1)] : 0;
          result[i+'x'+j] += result[(i+1)+'x'+(j-1)] ? result[(i+1)+'x'+(j-1)] : 0;
@@ -45,7 +45,7 @@ module.exports = data => {
              dj = buffer;
 
              // increase segment length if necessary
-             if (dj == 0) {
+             if (dj === 0) {
                  ++segment_length;
              }
          }

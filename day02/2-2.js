@@ -6,10 +6,10 @@ module.exports = data => {
         const rowResultArr = [];
 
         currentValue.split('\t').forEach((curVal, index, rowArr)=>{
-            
+
             rowArr.forEach(val=>{
                 if(parseInt(val)%parseInt(curVal) === 0 && val !== curVal) {
-                    rowResultArr.push(val,curVal)
+                    rowResultArr.push(val,curVal);
                 }
             });
 
