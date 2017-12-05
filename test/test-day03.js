@@ -53,6 +53,9 @@ describe('Day 3', () => {
             assert.equal(10, day3part2(6));
         });
 
+        it('should 66 return 122.', () => {
+            assert.equal(122, day3part2(66));
+        });
     });
 
 });
