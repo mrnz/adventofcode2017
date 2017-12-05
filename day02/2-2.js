@@ -1,23 +1,20 @@
 'use strict';
-module.exports = data => {
+module.exports = data => data.trim()
+    .split('\n')
+    .reduce((total, currentValue) => {
+        const rowResultArr = [];
 
-    return data.trim()
-        .split('\n')
-        .reduce((total, currentValue, currentIndex, arr)=>{
-            const rowResultArr = [];
+        currentValue.split('\t')
+            .forEach((curVal, index, rowArr) => {
 
-            currentValue.split('\t')
-                .forEach((curVal, index, rowArr)=>{
-
-                    rowArr.forEach(val=>{
-                        if(parseInt(val)%parseInt(curVal) === 0 && val !== curVal) {
-                            rowResultArr.push(val,curVal);
-                        }
-                    });
+                rowArr.forEach(val => {
+                    if (parseInt(val, 10) % parseInt(curVal, 10) === 0 && val !== curVal) {
+                        rowResultArr.push(val, curVal);
+                    }
+                });
 
             });
 
-            return total + parseInt(rowResultArr[0]) /  parseInt(rowResultArr[1]);
-        },0);
+        return total + parseInt(rowResultArr[0], 10) / parseInt(rowResultArr[1], 10);
 
-};
+    }, 0);

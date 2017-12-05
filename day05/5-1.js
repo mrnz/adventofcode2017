@@ -6,9 +6,9 @@ module.exports = data => {
 
     data = data.trim()
         .split('\n')
-        .map(x=>parseInt(x));
+        .map(x => parseInt(x, 10));
 
-    while(data[position] !== undefined){
+    while (typeof data[position] !== 'undefined') {
         position += data[position]++;
         counter++;
     }
