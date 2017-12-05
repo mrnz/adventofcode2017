@@ -3,19 +3,17 @@
   "version": "1.0.0",
   "description": "solutions to problems from AdventOfCode.com 2017",
   "main": "index.js",
-  "dependencies": {
-    "codecov": "^3.0.0",
-    "istanbul": "^0.4.5",
-    "mocha": "^4.0.1"
-  },
-  "devDependencies": {
-    "nyc": "^11.3.0"
-  },
   "scripts": {
     "test": "./node_modules/.bin/mocha ./test",
     "coverage": "./node_modules/.bin/istanbul cover ./node_modules/.bin/_mocha ./test",
     "nyc": "./node_modules/.bin/nyc ./node_modules/.bin/_mocha"
   },
   "author": "Przemek Marciniak",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "codecov": "^3.0.0",
+    "istanbul": "^0.4.5",
+    "mocha": "^4.0.1",
+    "nyc": "^11.3.0"
+  }
 }
