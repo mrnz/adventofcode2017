@@ -14,7 +14,7 @@ module.exports = data => {
 
         data[position] += data[position] < 3 ? 1 : -1;
         position += prevValue;
-        counter++
+        counter++;
 
     }
 
