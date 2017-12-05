@@ -3,7 +3,7 @@ module.exports = data => {
 
     const validate = (input) => {
 
-        const validation_result = input
+        return input
             .trim()
             .split(' ')
             .reduce( (total, currantValue, currantIndex, arr) => {
@@ -20,7 +20,6 @@ module.exports = data => {
 
         }, true);
 
-        return validation_result;
     };
 
     return data.trim()
