@@ -6,11 +6,10 @@ module.exports = data => {
 
     data = data.trim()
         .split('\n')
-        .map(x=>parseInt(x));
+        .map(x => parseInt(x, 10));
 
-    while(data[position] !== undefined){
+    while (typeof data[position] !== 'undefined') {
         const prevValue = data[position];
-        const prevPosition = position;
 
         data[position] += data[position] < 3 ? 1 : -1;
         position += prevValue;

@@ -1,22 +1,18 @@
 'use strict';
-module.exports = data => {
+module.exports = data => data
+    .trim()
+    .split('\n')
+    .reduce((total, currentValue) => {
 
-    return data
-        .trim()
-        .split('\n')
-        .reduce((total, currentValue, currentIndex, arr)=>{
+        const row = currentValue.split('\t').reduce((all, curVal) => {
 
-            const row = currentValue.split('\t').reduce((all, curVal)=>{
+            all[0] = all[0] ? Math.min(parseInt(curVal, 10), all[0]) : parseInt(curVal, 10);
+            all[1] = all[1] ? Math.max(parseInt(curVal, 10), all[1]) : parseInt(curVal, 10);
 
-                all[0] = all[0] ? Math.min(parseInt(curVal), all[0]) : parseInt(curVal);
-                all[1] = all[1] ? Math.max(parseInt(curVal), all[1]) : parseInt(curVal);
+            return all;
 
-                return all;
+        }, []);
 
-            },[]);
+        return total + row[1] - row[0];
 
-            return total + row[1] - row[0];
-
-    },0);
-
-};
+    }, 0);

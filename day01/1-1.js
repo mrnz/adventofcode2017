@@ -1,15 +1,11 @@
 'use strict';
-module.exports = data => {
+module.exports = data => data
+    .trim()
+    .split('')
+    .reduce((total, currentValue, currentIndex, arr) => {
 
-    return data
-        .trim()
-        .split('')
-        .reduce((total, currentValue, currentIndex, arr)=>{
+        const nextValue = arr[currentIndex + 1] || arr[0];
 
-            const nextValue = arr[currentIndex+1] || arr[0];
+        return currentValue === nextValue ? total + parseInt(currentValue, 10) : total;
 
-            return currentValue === nextValue ? total+parseInt(currentValue) : total;
-
-        },0);
-        
-};
+    }, 0);

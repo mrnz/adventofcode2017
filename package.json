@@ -6,7 +6,11 @@
   "scripts": {
     "test": "./node_modules/.bin/mocha ./test",
     "coverage": "./node_modules/.bin/istanbul cover ./node_modules/.bin/_mocha ./test",
-    "nyc": "./node_modules/.bin/nyc ./node_modules/.bin/_mocha"
+    "nyc": "./node_modules/.bin/nyc ./node_modules/.bin/_mocha",
+    "lint": "./node_modules/.bin/eslint ./day* ./test",
+    "lintfix": "./node_modules/.bin/eslint ./day* ./test --fix",
+    "start": "node ./day01/day01.js && node ./day02/day02.js && node ./day03/day03.js && node ./day04/day04.js && node ./day05/day05.js",
+    "mocha": "./node_modules/.bin/mocha -w ./day* ./test"
   },
   "author": "Przemek Marciniak",
   "license": "ISC",
@@ -15,5 +19,10 @@
     "istanbul": "^0.4.5",
     "mocha": "^4.0.1",
     "nyc": "^11.3.0"
+  },
+  "devDependencies": {
+    "eslint": "^4.12.1",
+    "eslint-config-eslint": "^4.0.0",
+    "eslint-plugin-mocha": "^4.11.0"
   }
 }
