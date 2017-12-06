@@ -10,7 +10,7 @@
     "lint": "./node_modules/.bin/eslint ./day* ./test",
     "lintfix": "./node_modules/.bin/eslint ./day* ./test --fix",
     "start": "node ./day01/day01.js && node ./day02/day02.js && node ./day03/day03.js && node ./day04/day04.js && node ./day05/day05.js",
-    "mocha": "./node_modules/.bin/mocha -w ./day* ./test"
+    "mocha": "./node_modules/.bin/mocha -w"
   },
   "author": "Przemek Marciniak",
   "license": "ISC",
