@@ -8,20 +8,18 @@ const common = module.exports = {
         memeoryBank[highestIndex] = 0;
 
         while (blocksInMemory--) {
-            highestIndex = typeof memeoryBank[highestIndex + 1] !== 'undefined' ? ++highestIndex : 0;
-            memeoryBank[highestIndex] += 1;
+            memeoryBank[++highestIndex % memeoryBank.length]++;
         }
         return memeoryBank;
-
     },
     init: data => {
-        const memoryBanks = data.trim().split('\t').map(Number);
+        let memoryBanks = data.trim().split('\t').map(Number);
         const results = new Map();
         let lastResult = memoryBanks.join();
 
         while (!results.has(lastResult)) {
             results.set(memoryBanks.join(), results.size);
-            common.cycle(memoryBanks, common.findBankToRedistribute(memoryBanks));
+            memoryBanks = common.cycle(memoryBanks, common.findBankToRedistribute(memoryBanks));
             lastResult = memoryBanks.join();
         }
         return [results.size, results.size - results.get(lastResult)];
