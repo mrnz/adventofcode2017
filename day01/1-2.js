@@ -4,8 +4,7 @@ module.exports = data => data
     .split('')
     .reduce((total, currentValue, currentIndex, arr) => {
         const half = arr.length / 2;
-        const nextIndex = arr[currentIndex + half] ? currentIndex + half : Math.abs(half - currentIndex);
-        const nextValue = arr[nextIndex];
+        const nextValue = arr[ (half + currentIndex) % arr.length];
 
-        return currentValue === nextValue ? total + parseInt(currentValue, 10) : total;
+        return currentValue === nextValue ? total + Number(currentValue) : total;
     }, 0);

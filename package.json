@@ -9,7 +9,7 @@
     "nyc": "./node_modules/.bin/nyc ./node_modules/.bin/_mocha",
     "lint": "./node_modules/.bin/eslint ./day* ./test",
     "lintfix": "./node_modules/.bin/eslint ./day* ./test --fix",
-    "start": "node ./day01/day01.js && node ./day02/day02.js && node ./day03/day03.js && node ./day04/day04.js && node ./day05/day05.js",
+    "start": "node ./day01/day01.js && node ./day02/day02.js && node ./day03/day03.js && node ./day04/day04.js && node ./day05/day05.js && node ./day06/day06.js",
     "mocha": "./node_modules/.bin/mocha -w"
   },
   "author": "Przemek Marciniak",

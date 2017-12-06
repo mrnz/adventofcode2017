@@ -2,19 +2,19 @@
 module.exports = data => data.trim()
     .split('\n')
     .reduce((total, currentValue) => {
-        const rowResultArr = [];
+        let rowResultArr;
 
         currentValue.split('\t')
             .forEach((curVal, index, rowArr) => {
 
                 rowArr.forEach(val => {
-                    if (parseInt(val, 10) % parseInt(curVal, 10) === 0 && val !== curVal) {
-                        rowResultArr.push(val, curVal);
+                    if (Number(val) % Number(curVal) === 0 && val !== curVal) {
+                        rowResultArr = Number(val) / Number(curVal);
                     }
                 });
 
             });
 
-        return total + parseInt(rowResultArr[0], 10) / parseInt(rowResultArr[1], 10);
+        return total + rowResultArr;
 
     }, 0);

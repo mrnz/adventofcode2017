@@ -1,19 +1,14 @@
 'use strict';
 module.exports = data => {
 
-    function validate(input) {
-        return input.trim()
-            .split(' ')
-            .reduce((total, currantValue, currantIndex, arr) => {
-
-                arr.forEach((value, idx) => {
-                    total = (currantValue === value && currantIndex !== idx) ? false : total;
-                });
-
-                return total;
-
-            }, true);
-    }
+    const validate = input => input.trim()
+        .split(' ')
+        .reduce((total, currantValue, currantIndex, fullArray) => {
+            fullArray.forEach((value, idx) => {
+                total = (currantValue === value && currantIndex !== idx) ? false : total;
+            });
+            return total;
+        }, true);
 
     return data.trim()
         .split('\n')

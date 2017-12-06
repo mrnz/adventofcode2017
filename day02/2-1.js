@@ -4,15 +4,11 @@ module.exports = data => data
     .split('\n')
     .reduce((total, currentValue) => {
 
-        const row = currentValue.split('\t').reduce((all, curVal) => {
+        const { min, max } = currentValue.split('\t').reduce((all, curVal) => ({
+            min: Math.min(Number(curVal), all.min),
+            max: Math.max(Number(curVal), all.max)
+        }), { min: Infinity, max: -Infinity });
 
-            all[0] = all[0] ? Math.min(parseInt(curVal, 10), all[0]) : parseInt(curVal, 10);
-            all[1] = all[1] ? Math.max(parseInt(curVal, 10), all[1]) : parseInt(curVal, 10);
-
-            return all;
-
-        }, []);
-
-        return total + row[1] - row[0];
+        return total + max - min;
 
     }, 0);
