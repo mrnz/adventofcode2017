@@ -8,8 +8,8 @@ module.exports = data => data.trim()
             .forEach((curVal, index, rowArr) => {
 
                 rowArr.forEach(val => {
-                    if (Number(val) % Number(curVal) === 0 && val !== curVal) {
-                        rowResultArr = Number(val) / Number(curVal);
+                    if (val % curVal === 0 && val !== curVal) {
+                        rowResultArr = val / curVal;
                     }
                 });
 
