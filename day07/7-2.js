@@ -14,8 +14,11 @@ const day7 = module.exports = {
             return { name, weight, tower };
         }),
 
-    allInArrayAreNumbers: array => array
-        .reduce((prev, current) => (typeof current !== 'number' ? false : prev), true),
+    allInArrayAreNumbers: array => array.reduce((prev, current) => {
+        const result = typeof current !== 'number' ? false : prev;
+
+        return result;
+    }, true),
 
     separeteItems: input => {
         const lastLevel = new Map(),
@@ -71,7 +74,11 @@ const day7 = module.exports = {
                 return;
             }
             const filtered = item.tower.filter((value, index, array) => array.indexOf(value) !== index)[0];
-            const inn = item.tower.reduce((total, currant, idx) => currant !== filtered ? [currant, idx] : total, null);
+            const inn = item.tower.reduce((total, currant, idx) => {
+                const res = currant !== filtered ? [currant, idx] : total;
+
+                return res;
+            }, null);
 
             result = (inn !== null) ? [item.prev[inn[1]], filtered - inn[0]] : result;
         });
