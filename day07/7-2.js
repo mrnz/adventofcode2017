@@ -1,17 +1,6 @@
 'use strict';
 const day7 = module.exports = {
 
-    allInArrayAreNumbers: array => {
-        let result = true;
-
-        array.forEach(x => {
-            if (typeof x !== 'number') {
-                result = false;
-            }
-        });
-        return result;
-    },
-
     prepareDate: input => input.trim()
         .split('\n')
         .map(row => {
@@ -22,12 +11,11 @@ const day7 = module.exports = {
             weight = parseInt(weight, 10);
             tower = tower ? tower.split(', ') : [];
 
-            return {
-                name,
-                weight,
-                tower
-            };
+            return { name, weight, tower };
         }),
+
+    allInArrayAreNumbers: array => array
+        .reduce((prev, current) => (typeof current !== 'number' ? false : prev), true),
 
     separeteItems: input => {
         const lastLevel = new Map(),
@@ -45,21 +33,16 @@ const day7 = module.exports = {
     },
 
     replacementItems: (restItems, lastLev) => {
-
         const result = restItems.map(item => {
-
             const res = Object.assign({}, item);
 
             res.prev = res.prev ? res.prev : {};
-
             lastLev.forEach((weight, name) => {
                 const thisIndex = res.tower.indexOf(name);
-
 
                 if (thisIndex !== -1) {
                     res.prev[thisIndex] = res.tower[thisIndex];
                     res.tower[thisIndex] = weight;
-
                 }
             });
             return res;
@@ -70,9 +53,7 @@ const day7 = module.exports = {
 
     reduceItems: restItems => {
         const result = restItems.map(item => {
-
             if (item.tower[0] * item.tower.length === item.tower.reduce((p, c) => p + c, 0)) {
-
                 item.weight += item.tower[0] * item.tower.length;
                 item.tower = [];
             }
@@ -83,35 +64,18 @@ const day7 = module.exports = {
     },
 
     valid: input => {
-
-        let rrr = false;
-
-        function findDuplicate(arr) {
-            const result = arr.filter((value, index, array) => array.indexOf(value) !== index)[0];
-
-            return result;
-        }
+        let result = false;
 
         input.forEach(item => {
-
             if (!day7.allInArrayAreNumbers(item.tower)) {
                 return;
             }
+            const filtered = item.tower.filter((value, index, array) => array.indexOf(value) !== index)[0];
+            const inn = item.tower.reduce((total, currant, idx) => currant !== filtered ? [currant, idx] : total, null);
 
-            // if (!(item.tower[0] * item.tower.length === item.tower.reduce((p, c) => p + c, 0))) {
-            const abc = findDuplicate(item.tower);
-            const inn = item.tower.reduce((x,c,i)=>c!==abc?[c,i]:x,null);
-
-            if (inn !== null) {
-                rrr = [item.prev[inn[1]], abc - inn[0]];
-            }
-
-            // }
-
+            result = (inn !== null) ? [item.prev[inn[1]], filtered - inn[0]] : result;
         });
-        return rrr;
-
-
+        return result;
     },
 
     init: data => {
@@ -129,7 +93,6 @@ const day7 = module.exports = {
             rest = day7.replacementItems(rest, lastLevel);
             rest = day7.reduceItems(rest, lastLevel);
         }
-
         return mapAllW[day7.valid(rest)[0]] + day7.valid(rest)[1];
     }
 };
