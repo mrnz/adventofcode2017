@@ -1,32 +1,11 @@
 'use strict';
-module.exports = data => {
-    const map = new Map();
-
-    data = data.trim().split('\n').forEach(x => {
-        const [z, y] = x.split(':').map(Number);
-
-        for (let i = map.size; i < z; i++) {
-            map.set(i, false);
+module.exports = data => data
+    .trim()
+    .split('\n')
+    .map(x => x.split(': ').map(Number))
+    .reduce((prev, curr) => {
+        if (curr[0] % (2 * (curr[1] - 1)) === 0) {
+            prev += curr[0] * curr[1];
         }
-        map.set(z, y);
-    });
-    let pico = 0;
-    let counter = 0;
-
-    while (pico < map.size) {
-        let depth = map.get(pico);
-        if (!depth) {
-            pico++;
-            continue;
-        }
-
-        let cycle = Math.floor(pico / map.get(pico));
-        console.log(cycle);
-        console.log(cycle%2);
-        console.log(pico % map.get(pico));
-        console.log('---');
-        pico++;
-    }
-
-    return map;
-};
+        return prev;
+    }, 0);

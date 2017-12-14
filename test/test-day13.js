@@ -2,21 +2,22 @@
 'use strict';
 
 const assert = require('assert'),
-    day13part1 = require('../day13/13.js').day13part1,
-    day13part2 = require('../day13/13.js').day13part2;
+    day13part1 = require('../day13/13-1.js'),
+    day13part2 = require('../day13/13-2.js');
 
+const test = '0: 3\n1: 2\n4: 4\n6: 4';
 
 describe('Day 13', () => {
 
     describe('Part One', () => {
-        it('should test return 6', () => {
-            assert.equal(6, day13part1(test));
+        it('should test return 24', () => {
+            assert.equal(24, day13part1(test));
         });
     });
 
     describe('Part Two', () => {
-        it('should test two return 2', () => {
-            assert.equal(2, day13part2(test));
+        it('should test two return 10', () => {
+            assert.equal(10, day13part2(test));
         });
     });
 
