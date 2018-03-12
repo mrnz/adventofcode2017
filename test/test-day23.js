@@ -16,9 +16,10 @@ describe('Day 23', () => {
     });
 
     describe('Part Two', () => {
-        it('should part2 with test input from adventofcode return 915', () => {
+        it('should part2 with test input from adventofcode return 915', function(done) {
+            this.timeout(3500);
             assert.equal(915, day23.part2(testData));
+            done();
         });
-    }).timeout(1000);
-
+    });
 });
