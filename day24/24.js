@@ -1,3 +1,4 @@
+/* eslint no-confusing-arrow: 0 */
 'use strict';
 
 class Bridge {
