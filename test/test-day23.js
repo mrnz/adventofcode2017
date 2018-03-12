@@ -19,6 +19,6 @@ describe('Day 23', () => {
         it('should part2 with test input from adventofcode return 915', () => {
             assert.equal(915, day23.part2(testData));
         });
-    });
+    }).timeout(1000);
 
 });
