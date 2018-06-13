@@ -1,3 +1,4 @@
+/* eslint no-loop-func: 0 */
 'use strict';
 const day20 = module.exports = {
     prepareInput: input => input.trim()
